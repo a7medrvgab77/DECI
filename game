@@ -1,0 +1,259 @@
+import random
+import time
+
+# READ MY NOTES BELOW
+
+# Initialize score variable
+total_score = 0
+
+# Functions:
+# PRINT SCORE
+def normal_score():
+    print_and_wait("\n\nYour Total Score Has Increased By 1")
+def done_score():
+    score="5"
+    print_and_wait("Your Total Score Now is "+ score +" /5")
+def fail_score():
+    score="0"
+    print_and_wait("Your Score Now is "+ score)
+#1 PRINT with wait time
+def print_and_wait(string):
+    print(string)
+    time.sleep(2)
+#2 GET Username 
+user_name = ""
+def get_valid_name():
+    while True:
+        name = input("\nPlease enter your name: ")
+        if name.isalpha():
+            time.sleep(2)
+            return name
+        else:
+            print("Invalid name entered, Name can only contain letters.\n\n");time.sleep(1)
+# Random Engagment
+def choosing_case():
+    cases = ["Cyber Security", "Project Manager"]
+    choosed_case=random.choice(cases)
+    return choosed_case
+# Get 1 or 2 from user
+def get_choice():
+    choice = input("Enter 1 or 2: ")
+    while choice not in ["1", "2"]:
+        choice = input("Invalid choice. Please enter 1 or 2: ")
+    return choice
+# Cyber Security Scenario
+def cyber_security_scenario():
+            print_and_wait("You are working in a cybersecurity company. One day, you receive an alert about a potential security breach. What would you like to do?\n\n1. Investigate the alert immediately.\n2. Report the alert to the IT department.")           
+            choice = get_choice()
+            if choice == "1":
+                print_and_wait("Good Choice, You decide to investigate the alert immediately.\n")
+                normal_score()
+                print_and_wait("During the investigation, you discover a suspicious file on one of the company's servers. What would you like to do?\n\n1. Analyze the file for any malicious content.\n2. Quarantine the file and notify the IT department.")
+                choice = get_choice()
+                if choice == "1":
+                    print_and_wait("Good Step:You start analyzing the file for any malicious content.")
+                    normal_score()
+                    print("After thorough analysis, you determine that the file is indeed malicious. What would you like to do?\n\n1. Remove the file and strengthen the system's security.\n2. Extract useful information from the file for further investigation.")
+                    choice = get_choice()
+                    if choice == "1":
+                        normal_score()
+                        print("You remove the file successfuly but you found another  file installed in the system. What Would you like to do? \n\n1. Check the Date and details about this file.\n2. Delete this file too.")
+                        if choice == "1":
+                            print("You Found the details about the files and you found the source that these files are downloaded. What would you like to do? \n\n1. Block this site and contitnut working.\n2. Exit the internet Connection")
+                            if choice =="1":
+                                print_and_wait("Good Step")
+                                done_score()
+                                print("Congratulations, " + user_name + "! You successfully mitigated the security breach.\n\n\t** You win! **")
+                            elif choice=="2":  
+                                print_and_wait("It's not the Best Step")
+                                fail_score()
+                                
+                                print("Unfortunately, the breach escalates before you can take further action.")
+                                print("Game over. The breach compromised critical systems.")
+                                
+                        elif choice=="2":
+                            print("You Extracted the useful Information, the user is who do this attack is from the company. What would you like to do? \n\n1. Notify the Leader.\n2. Contact to him and try to advice him.")
+                            if choice==1:
+                                print_and_wait("GOOD STEP")
+                                done_score()
+                                print("Congratulations, " + user_name + "! You successfully mitigated the security breach.\n\n\t** You win! **")
+                            elif choice=="2":     
+                                print_and_wait("It's not the Best Step")
+                                fail_score()
+                                              
+                                print("Unfortunately, the breach escalates before you can take further action.")
+                                print("Game over. The breach compromised critical systems.")
+                                                            
+                    elif choice == "2":
+                        print("You extract useful information from the file and send it for further investigation.")
+                        print_and_wait("It's not the Best Step")
+                        fail_score()
+                        
+                        print("Unfortunately, the breach escalates before you can take further action.")
+                        print("The breach compromised critical systems.\n\n\t*** GAME OVER ***")
+
+                    elif choice == "2":
+                        print("You extract useful information from the file and send it for further investigation.")
+                        print_and_wait("It's not the Best Step")
+                        fail_score()
+                        print("Unfortunately, the breach escalates before you can take further action.")
+                        print("The breach compromised critical systems.\n\n\t*** GAME OVER ***")
+
+                elif choice == "2":
+                    print_and_wait("You quarantine the file and notify the IT department. The IT department investigates and determines the file is harmless.")
+                    print_and_wait("However, during their investigation, the attackers escalate their activities. What would you like to do?\n\n1. Collaborate with the IT department to track and neutralize the attackers.\n2. Request assistance from external cybersecurity experts.")
+                    choice = get_choice()
+                    if choice == "1":
+                        print_and_wait("You collaborate with the IT department and successfully track down the attackers. But you found that there's still a connection from unknown device. What would you like to do? \n\n1. Close this connection.\n2. Gathering Information about this device")
+                        choice = get_choice()
+                        if choice =="1":
+                            print_and_wait("GOOD STEP")
+                            done_score()
+                            print_and_wait("Congratulations, " + user_name + "! You successfully mitigated the security breach.\n\n\t** You win! **")
+                        elif choice=="2":
+                            print_and_wait("It's not the Best Step")
+                            fail_score() 
+                            print_and_wait("Unfortunately, Your actions are too late; a major disaster occurs as a result of the hack.\n\n\t*** GAME OVER ***")
+                    elif choice=="2":
+                        print_and_wait("You asked an expert And He adviced you to exit the internet connection and try to find information about the device. What would you like to do First? \n\n1. Exit internet Connection\n2. Gathering Info about hte device.")
+                        choice = get_choice()
+                        if choice=="1":
+                            print_and_wait("You successfully contain the threat by taking immediate measures.\n")
+                            done_score()
+                            print("Congratulations, " + user_name + "! You successfully mitigated the security breach.\n\n\t** You win! **")
+                        elif choice=="2":
+                            print_and_wait("It's not the Best Step")
+                            fail_score()
+                            print_and_wait("Your actions are successful! However, it is too late for a full recovery\n\n\t*** Game Over ***")
+                    elif choice == "2":
+
+                        print_and_wait("You request assistance from external cybersecurity experts.")
+                        print_and_wait("It's not the Best Step")
+                        fail_score()
+                        print("Unfortunately, the attackers exploit the delay, causing severe damage.")
+                        print("The breach resulted in significant data loss.\n\n\t*** GAME OVER ***")
+            elif choice == "2":
+                print("You report the alert to the IT department.")
+                print("The IT department takes over the investigation, but the attackers remain undetected.")
+                print("What would you like to do in the meantime?")
+                print("1. Conduct your independent investigation to gather evidence.")
+                print("2. Collaborate with the IT department to strengthen the system's defenses.")
+
+                choice = get_choice()
+
+                if choice == "1":
+                    print("You conduct your independent investigation and gather crucial evidence.")
+                    print("Together with the IT department, you identify and apprehend the attackers.")
+                    done_score()
+                    print("Congratulations, " + user_name + "! You successfully resolved the security breach.")
+                    print("You win!")
+
+                elif choice == "2":
+                    print_and_wait("It's not the Best Step")
+                    fail_score()
+                    print("You collaborate with the IT department to strengthen the system's defenses.")
+                    print("However, the attackers launch a sophisticated attack that bypasses the defenses.")
+                    print("The breach results in a significant data breach.\n\n\t*** GAME OVER ***")
+
+            else:
+                print("Invalid choice. Please try again.")
+# Project Manager Scanrio
+def project_manager_scenario():
+        print_and_wait("You are a project manager for a major construction project. One day, you receive a report that a key contractor has gone bankrupt and will no longer be able to fulfill their contractual obligations. What would you like to do?\n\n1. Find a replacement contractor to take over the work.\n2. Reallocate the work among the remaining contractors.")
+        
+        choice = get_choice()
+        
+        if choice == "1":
+            print("You decide to find a replacement contractor to take over the work.")
+            normal_score()
+            print_and_wait("During your search, you discover that most contractors are already booked and can't take on additional work. What would you like to do?\n\n1. Offer incentives to a contractor to prioritize your project.\n2. Delay the project until a new contractor is found.")
+            
+            choice = get_choice()
+            
+            if choice == "1":
+                print_and_wait("You offer incentives to a contractor to prioritize your project, which they accept. However, the contractor's work quality proves to be subpar, causing delays in the project timeline.")
+                print_and_wait("Good Step")
+                normal_score()
+                print("What would you like to do?\n\n1. Provide additional oversight and resources to improve the contractor's work quality.\n2. Terminate the contract with the contractor and find a new one.")
+                
+                choice = get_choice()
+                
+                if choice == "1":
+                    print_and_wait("You provide additional oversight and resources to improve the contractor's work quality, which helps them to complete the project successfully. The project is delivered on time, but slightly over budget.")
+                    done_score()
+                    print_and_wait("Congratulations, " + user_name + "! You have successfully completed the project despite unexpected challenges.\n\n\t** You win! **")
+                elif choice == "2":
+                    print_and_wait("You terminate the contract with the contractor and find a new one. The delay causes the project to be delivered late and over budget, but the quality of work is much better than before.")
+                    done_score()
+                    print_and_wait("Congratulations, " + user_name + "! You have successfully completed the project despite unexpected challenges.\n\n\t** You win! **")
+                    
+            elif choice == "2":
+                print("You delay the project until a new contractor is found.")
+                print_and_wait("Good Choice")
+                normal_score()
+                print_and_wait("During the delay, some of the project's materials become unavailable, causing additional delays. What would you like to do?\n\n1. Find replacement materials and continue with the project.\n2. Delay the project further and wait for the original materials to become available.")
+                
+                choice = get_choice()
+                
+                if choice == "1":
+                    print_and_wait("You find replacement materials and continue with the project, which is completed successfully on time and within budget.")
+                    done_score()
+                    print_and_wait("Congratulations, " + user_name + "! You have successfully completed the project despite unexpected challenges.\n\n\t** You win! **")
+                elif choice == "2":
+                    print_and_wait("It's not the Best Step")
+                    fail_score()
+                    print_and_wait("You delay the project further and wait for the original materials to become available. The delay causes the project to be delivered very late and well over budget.")
+                    print_and_wait("Unfortunately, the company suffers significant losses due to the delay and budget overrun.\n\n\t*** GAME OVER ***")
+                    
+        elif choice == "2":
+            print("You decide to reallocate the work among the remaining contractors.")
+            normal_score()
+            print_and_wait("Unfortunately, the remaining contractors struggle to pick up the slack, causing delays in the project timeline.")
+            print("What would you like to do?\n\n1. Provide additional support and resources to the remaining contractors.\n2. Delay the project until a new contractor is found to take over the work.")
+            
+            choice = get_choice()
+            
+            if choice == "1":
+                print_and_wait("You provide additional support and resources to the remaining contractors, enabling them to complete the project successfully on time but slightly over budget.")
+
+                done_score()
+                print_and_wait("Congratulations, " + user_name + "! You have successfully completed the project despite unexpected challenges.\n\n\t** You win! **")
+            elif choice == "2":
+                print_and_wait("You delay the project until a new contractor is found to take over the work. The delay causes the project to be delivered very late and well over budget.")
+                fail_score()
+                print_and_wait("Unfortunately, the company suffers significant losses due to the delay and budget overrun.\n\n\t*** GAME OVER ***")
+# Ask to play again or not Function
+def play_again():
+            choice = input("Do you want to play again? (y/n): ")
+            if choice == "y":
+                print("\nLet's play again!")
+                main()
+                play_again()
+            elif choice == "n":
+                print("\nThanks for playing! Goodbye.")
+            else:
+                print("\nInvalid choice. Please enter 'y' or 'n'.")
+                play_again()
+# Main Function
+def main():
+    user_name = get_valid_name()
+    print_and_wait("\nWelcome, " + user_name + "! In the Tech Game\n")
+    print_and_wait("This game Assign you A ranom Case and you test you in Techical Infromation.\n")
+    print_and_wait("Each True Choice will increase your score by 1, But the Incorrect Choice will End your Game because This choice maybe Interrupt the whole Buisness.")
+    chosen_case = choosing_case()
+    print("You are in the case of " + chosen_case + " Challenge.")
+    if chosen_case == "Cyber Security":
+        cyber_security_scenario()
+    elif chosen_case == "Project Manager":         
+        project_manager_scenario()
+    play_again()
+
+main()
+
+'''
+My notes:
+- This game just rely on take input and put action based on this input and so on.
+- Put the randomization in the beginning of the game.
+- I try to validate for each input, for security reasons
+- I use Loops and Recursion[in play again function] to ensure that user will enter the input that i'm expecting
+'''
